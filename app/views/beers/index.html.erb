@@ -1,0 +1,33 @@
+<ul class="nav justify-content-end">
+  <li class="nav-item">
+    <a class="nav-link active" href="#">Active</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Link</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  </li>
+</ul>
+<div class="card-deck">
+<% @beers.each do |beer| %>
+  <div class="card">
+    <%= image_tag beer.picture, class: "card-img-top"%>
+    <div class="card-body">
+      <h5 class="card-title btn btn-primary"><%= beer.name %></h5><br>
+      <p class="card-text badge badge-primary text-wrap"><%= beer.description %></p>
+      <p class="card-text"><li><%= beer.price %></p>
+      <p class="card-text "><%= beer.available ? 'disponible': 'agotada' %></p>
+      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      
+      <%= link_to "Edit", edit_beer_path(beer) %> |
+      <%= link_to 'Delete', delete_beer_path(beer), method: :delete, data: {confirm: 'Are you Sure?'} %>
+    </div>
+  </div>
+  <%end %>
+</div>
+ <%= link_to "Nueva Chela", beers_new_path %>
+
